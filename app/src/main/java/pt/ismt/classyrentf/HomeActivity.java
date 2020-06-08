@@ -1,5 +1,6 @@
 package pt.ismt.classyrentf;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,9 +24,9 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
-        //etAlojamento = findViewById(R.id.alojamento_text);
-        //etCidade = findViewById(R.id.cidade_text);
-        //etUni = findViewById(R.id.uni_text);
+        etAlojamento = findViewById(R.id.alojamento_text);
+        etCidade = findViewById(R.id.cidade_text);
+        etUni = findViewById(R.id.uni_text);
         _lv = findViewById(R.id.aloView);
 
 
@@ -34,7 +36,7 @@ public class HomeActivity extends AppCompatActivity {
 
         Log.d("Debug", "Botão de inserir um utilizador foi pressionado!");
 
-        /*if (etAlojamento.getText().toString().length() == 0) {
+        if (etAlojamento.getText().toString().length() == 0) {
             etAlojamento.setError("É necessário preencher o nome!");
 
             etAlojamento.requestFocus();
@@ -50,16 +52,16 @@ public class HomeActivity extends AppCompatActivity {
 
             //dados a enviar para a API (formato BODY)
             String dados = "nome=" + etAlojamento.getText() + "&email=" + etCidade.getText() + "&pass=" + etUni.getText();
-*/
+
         //inicia o pedido à API
         _api = new ApiConnectionA();
         _api._activity = HomeActivity.this;
         _api._listaPlace = new ArrayList();
         _api.execute("http://10.0.2.2:3001/alojamentos","0");
         }
-    //}
+    }
 
-    public void updateUI() {
+    public void updateUIH() {
         //lista onde irá ficar armazenado a string para mostrar na lista (listView)
         final ArrayList<String> dadosLista = new ArrayList<>();
 
@@ -76,5 +78,9 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
+    public void successMessageH() {
+        Toast.makeText(this, "Preenchimento realizado com sucesso!", Toast.LENGTH_LONG).show();
+
+    }
 
 }

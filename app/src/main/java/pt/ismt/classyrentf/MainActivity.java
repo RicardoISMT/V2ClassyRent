@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         _api = new ApiConnection();
         _api._activity = MainActivity.this;
         _api._listaUser = new ArrayList();
-        _api.execute("http://localhost:3001/entrar","0");
+        _api.execute("http://10.0.2.2:3001/entrar","0");
     }
 
     /*public void pedidoApiDeTodosAlunos(View v) {

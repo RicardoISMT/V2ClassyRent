@@ -88,11 +88,11 @@ public class ApiConnection extends AsyncTask<String, Void, Void> {
 
             if (_resJson != null) {
                 try {
-                    JSONObject _resposta = new JSONObject(_resJson);
+                    JSONArray _resposta = new JSONArray(_resJson);
 
                     //verifica se a API devolveu um array (JSONArray) ou um objeto (JSONObject)
-                    if (_resposta.get("dados") instanceof JSONArray) {
-                        JSONArray _listUtilizadorJson = _resposta.getJSONArray("dados");
+                    if (_resposta.get(Integer.parseInt("dados")) instanceof JSONArray) {
+                        JSONArray _listUtilizadorJson = _resposta.getJSONArray(Integer.parseInt("dados"));
 
                         for (int i = 0; i < _listUtilizadorJson.length(); i++) {
                             JSONObject _user = _listUtilizadorJson.getJSONObject(i);
@@ -108,8 +108,8 @@ public class ApiConnection extends AsyncTask<String, Void, Void> {
                             user.put("pass", String.valueOf(pass));
                             _listaUser.add(user);
                         }
-                    } else if (_resposta.get("dados") instanceof JSONObject) {
-                        JSONObject _user = _resposta.getJSONObject("dados");
+                    } else if (_resposta.get(Integer.parseInt("dados")) instanceof JSONObject) {
+                        JSONObject _user = _resposta.getJSONObject(Integer.parseInt("dados"));
                         String id = _user.getString("id");
                         String person = _user.getString("person");
                         String email = _user.getString("email");
@@ -168,10 +168,7 @@ public class ApiConnection extends AsyncTask<String, Void, Void> {
         }
 
         //verifica qual das activities invocou a API
-        if (_activity.getClass().getSimpleName().equals("HomeActivity")) {
-            HomeActivity ha = (HomeActivity) _activity;
-            ha.updateUI();
-        } else if (_activity.getClass().getSimpleName().equals("InsertActivity")) {
+        if (_activity.getClass().getSimpleName().equals("InsertActivity")) {
             InsertActivity ia = (InsertActivity) _activity;
             ia.successMessage();
         }

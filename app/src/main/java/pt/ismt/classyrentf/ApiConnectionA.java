@@ -87,11 +87,11 @@ public class ApiConnectionA extends AsyncTask<String, Void, Void> {
             Log.d("http", "A resposta ao pedido HTTP foi: " + _resJson);
 
             try {
-                JSONObject _resposta = new JSONObject(_resJson);
+                JSONArray _resposta = new JSONArray(_resJson);
 
                 //verifica se a API devolveu um array (JSONArray) ou um objeto (JSONObject)
-                if (_resposta.get("dados") instanceof JSONArray) {
-                    JSONArray _listPlaceJson = _resposta.getJSONArray("dados");
+                if (_resposta.get(Integer.parseInt("dados")) instanceof JSONArray) {
+                    JSONArray _listPlaceJson = _resposta.getJSONArray(Integer.parseInt("dados"));
 
                     for (int i = 0; i < _listPlaceJson.length(); i++) {
                         JSONObject _place = _listPlaceJson.getJSONObject(i);
@@ -117,8 +117,8 @@ public class ApiConnectionA extends AsyncTask<String, Void, Void> {
                         place.put("user_id", String.valueOf(user_id));
                         _listaPlace.add(place);
                     }
-                } else if (_resposta.get("dados") instanceof JSONObject) {
-                    JSONObject _place = _resposta.getJSONObject("dados");
+                } else if (_resposta.get(Integer.parseInt("dados")) instanceof JSONObject) {
+                    JSONObject _place = _resposta.getJSONObject(Integer.parseInt("dados"));
                     String id = _place.getString("id");
                     String alojamento = _place.getString("alojamento");
                     String cidade = _place.getString("cidade");
@@ -188,10 +188,10 @@ public class ApiConnectionA extends AsyncTask<String, Void, Void> {
         //verifica qual das activities invocou a API
         if (_activity.getClass().getSimpleName().equals("HomeActivity")) {
             HomeActivity ha = (HomeActivity) _activity;
-            ha.updateUI();
-        } else if (_activity.getClass().getSimpleName().equals("InsertActivity")) {
-            InsertActivity ia = (InsertActivity) _activity;
-            ia.successMessage();
+            ha.updateUIH();
+        } else if (_activity.getClass().getSimpleName().equals("HomeActivity")) {
+            HomeActivity ia = (HomeActivity) _activity;
+            ia.successMessageH();
         }
     }
 
