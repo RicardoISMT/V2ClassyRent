@@ -27,7 +27,7 @@ public class InsertActivity extends AppCompatActivity {
 
         public void inserirAluno(View v) {
 
-                Log.d("Debug", "Botão de procura de alojamento foi pressionado!");
+                Log.d("Debug", "Botão de inserir um utilizador foi pressionado!");
 
                 if (etNomeR.getText().toString().length() == 0) {
                     etNomeR.setError("É necessário preencher o nome!");
@@ -44,18 +44,17 @@ public class InsertActivity extends AppCompatActivity {
                 } else {
 
                     //dados a enviar para a API (formato BODY)
-                    String dados = "nome=" + etNomeR.getText() + "&email=" + etEmailR.getText() + "&palavrapasse=" + etPalavrapasseR.getText();
+                    String dados = "nome=" + etNomeR.getText() + "&email=" + etEmailR.getText() + "&pass=" + etPalavrapasseR.getText();
 
                     //executa o pedido à API
                     _api = new ApiConnection();
                     _api._activity = InsertActivity.this;
-                    _api._listaAlunos = new ArrayList();
+                    _api._listaUser = new ArrayList();
 
                     //Teoricamente passa os 'dados' para uma string que vai para a ApiConnection
-                    Log.d("Data", _api._listaAlunos.toString());
+                    Log.d("Data", _api._listaUser.toString());
 
                     _api.execute("http://10.0.2.2:3001/registo", "1", dados);
-
 
                 }
             }
@@ -67,12 +66,11 @@ public class InsertActivity extends AppCompatActivity {
         etEmailR.setText("");
         etPalavrapasseR.setText("");
 
+        Intent registoUtilizador = new Intent(this, HomeActivity.class);
+        startActivity(registoUtilizador);
+
     }
 
-    public void voltarInicio(View v) {
-        Intent voltar = new Intent(this, MainActivity.class);
-        startActivity(voltar);
-    }
 
 }
 

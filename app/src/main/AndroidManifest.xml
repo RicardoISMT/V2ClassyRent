@@ -14,8 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <activity android:name="pt.ismt.classyrentf.HomeActivity" />
+        <activity android:name="pt.ismt.classyrentf.EliminarActivity" />
         <activity android:name="pt.ismt.classyrentf.InsertActivity" />
         <activity android:name="pt.ismt.classyrentf.ApiConnection" />
+        <activity android:name="pt.ismt.classyrentf.ApiConnectionA" />
 
         <activity
             android:name="pt.ismt.classyrentf.MainActivity"

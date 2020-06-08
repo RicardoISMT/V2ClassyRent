@@ -25,7 +25,7 @@ public class ApiConnection extends AsyncTask<String, Void, Void> {
 
     public Activity _activity;
     private ProgressDialog _pdialog;
-    public ArrayList<HashMap<String, String>> _listaAlunos;
+    public ArrayList<HashMap<String, String>> _listaUser;
 
     @Override
     protected void onPreExecute() {
@@ -72,9 +72,11 @@ public class ApiConnection extends AsyncTask<String, Void, Void> {
             _conexao.setReadTimeout(12000);
             _conexao.setConnectTimeout(12000);
             _conexao.connect();
+
             Log.d("http", "O código HTTP do pedido foi: " + _conexao.getResponseCode());
 
             int _httpStatus = _conexao.getResponseCode();
+
             if (_httpStatus != HttpURLConnection.HTTP_BAD_REQUEST && _httpStatus != HttpURLConnection.HTTP_INTERNAL_ERROR && _httpStatus != HttpURLConnection.HTTP_NOT_FOUND) {
                 _is = _conexao.getInputStream();
             } else {
@@ -104,7 +106,7 @@ public class ApiConnection extends AsyncTask<String, Void, Void> {
                             user.put("person", String.valueOf(person));
                             user.put("email", String.valueOf(email));
                             user.put("pass", String.valueOf(pass));
-                            _listaAlunos.add(user);
+                            _listaUser.add(user);
                         }
                     } else if (_resposta.get("dados") instanceof JSONObject) {
                         JSONObject _user = _resposta.getJSONObject("dados");
@@ -118,7 +120,7 @@ public class ApiConnection extends AsyncTask<String, Void, Void> {
                         user.put("person", String.valueOf(person));
                         user.put("email", String.valueOf(email));
                         user.put("pass", String.valueOf(pass));
-                        _listaAlunos.add(user);
+                        _listaUser.add(user);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -166,9 +168,9 @@ public class ApiConnection extends AsyncTask<String, Void, Void> {
         }
 
         //verifica qual das activities invocou a API
-        if (_activity.getClass().getSimpleName().equals("MainActivity")) {
-            MainActivity ma = (MainActivity) _activity;
-            ma.updateUI();
+        if (_activity.getClass().getSimpleName().equals("HomeActivity")) {
+            HomeActivity ha = (HomeActivity) _activity;
+            ha.updateUI();
         } else if (_activity.getClass().getSimpleName().equals("InsertActivity")) {
             InsertActivity ia = (InsertActivity) _activity;
             ia.successMessage();

@@ -31,17 +31,6 @@
         app:layout_constraintVertical_bias="0.388"
         app:srcCompat="@drawable/classyrentlogo" />
 
-    <ImageButton
-        android:id="@+id/botaoInfo3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:backgroundTint="#00FFFFFF"
-        android:tint="#FF5722"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_info" />
-
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="337dp"
@@ -81,7 +70,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="32dp"
         android:backgroundTint="#F15A24"
-        android:text="Criar"
+        android:onClick="entrarAluno"
+        android:text="Iniciar"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="12sp"

@@ -28,22 +28,37 @@ public class MainActivity extends AppCompatActivity {
         startActivity(novoAluno);
     }
 
-    public void pedidoApiDeTodosAlunos(View v) {
+    //Direciona para a página para remover um utilizador
+    public void viewEliminarUtilizador(View v)  {
+        Intent eliminarUtilizador = new Intent(this, EliminarActivity.class);
+        startActivity(eliminarUtilizador);
+    }
+
+    public void pedidoApiDeUmAluno(View v) {
         //inicia o pedido à API
         _api = new ApiConnection();
         _api._activity = MainActivity.this;
-        _api._listaAlunos = new ArrayList();
-        _api.execute("http://10.0.2.2:3001/registo","0");
+        _api._listaUser = new ArrayList();
+        _api.execute("http://localhost:3001/entrar","0");
     }
 
+    /*public void pedidoApiDeTodosAlunos(View v) {
+        //inicia o pedido à API
+        _api = new ApiConnection();
+        _api._activity = MainActivity.this;
+        _api._listaUser = new ArrayList();
+        _api.execute("http://localhost:3001/alojamentos","0");
+    }*/
+
+    /*
     public void updateUI() {
         //lista onde irá ficar armazenado a string para mostrar na lista (listView)
         final ArrayList<String> dadosLista = new ArrayList<>();
 
         //ciclo que percorre todos os alunos retornados pela API
-        for (int i=0; i<_api._listaAlunos.size(); i++) {
+        for (int i=0; i<_api._listaUtilizadorR.size(); i++) {
             //variável que guarda os dados do aluno (no formato key-value-pair)
-            HashMap<String, String> user = _api._listaAlunos.get(i);
+            HashMap<String, String> user = _api._listaUtilizadorR.get(i);
 
             //string com os dados a mostrar na lista no formato - nome(id) e por baixo o email
             String nome_e_id = user.get("person")+" ("+user.get("id")+") \n"+user.get("email");
@@ -51,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
         }
         _lv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, dadosLista));
     }
+    */
+
 }
 
 
