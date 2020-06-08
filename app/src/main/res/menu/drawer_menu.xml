@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+
+        <item android:title="Conta">
+            <menu>
+                <item
+                    android:id="@+id/nav_inicio"
+                    android:icon="@drawable/ic_person"
+                    android:title="Iniciar sessão"/>
+
+                <item
+                    android:id="@+id/nav_registo"
+                    android:icon="@drawable/ic_person_add"
+                    android:title="Registar nova conta"/>
+
+                <item
+                    android:id="@+id/nav_conta_delete"
+                    android:icon="@drawable/ic_delete"
+                    android:title="Eliminar conta"/>
+
+            </menu>
+        </item>
+    </group>
+
+
+        <item android:title="Alojamentos">
+            <menu>
+            <item
+                android:id="@+id/nav_home"
+                android:icon="@drawable/ic_uni"
+                android:title="Procurar alojamentos"/>
+
+            <item
+                android:id="@+id/nav_house"
+                android:icon="@drawable/ic_house"
+                android:title="Alojamento/s do utilizador"/>
+
+            <item
+                android:id="@+id/nav_edit"
+                android:icon="@drawable/ic_edit"
+                android:title="Editar alojamento"/>
+
+        </menu>
+    </item>
+
+
+
+    <item android:title="Sobre nós">
+        <menu>
+            <item
+                android:id="@+id/nav_info"
+                android:icon="@drawable/ic_info"
+                android:title="Informações"/>
+
+        </menu>
+    </item>
+
+
+</menu>

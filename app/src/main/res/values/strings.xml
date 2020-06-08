@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ClassyRent</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string-array name="uni">
+        <item>Instituto Superior Miguel Torga</item>
+        <item>Instituto Merda Miguel Torga</item>
+    </string-array>
+
+
+
+
+
+
+</resources>
